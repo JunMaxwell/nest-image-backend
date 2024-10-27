@@ -3,14 +3,14 @@
 ## Installation
 
 ```bash
-$ yarn
+$ npm install
 ```
 
 ## Running the app
 
 ```bash
 # watch mode
-$ yarn start:dev
+$ npm run start:dev
 ```
 
 Note: Before starting the server ,ensure the database connection details is updated in the `.env`

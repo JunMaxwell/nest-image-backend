@@ -6,9 +6,19 @@ import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
 import { ImagesModule } from './images/images.module';
+import { AuthModule } from './auth/auth.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), UsersModule, PostsModule, CommentsModule, ImagesModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    UsersModule,
+    PostsModule,
+    CommentsModule,
+    ImagesModule,
+    AuthModule,
+    PrismaModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

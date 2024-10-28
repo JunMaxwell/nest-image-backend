@@ -1,26 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { CreateImageDto } from './dto/create-image.dto';
-import { UpdateImageDto } from './dto/update-image.dto';
-
+import { Image, Prisma } from '@prisma/client';
+import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class ImagesService {
-  create(createImageDto: CreateImageDto) {
-    return 'This action adds a new image';
+  constructor(private prisma: PrismaService) {}
+
+  async create(data: Prisma.ImageCreateInput): Promise<Image> {
+    return this.prisma.image.create({ data });
   }
 
-  findAll() {
-    return `This action returns all images`;
+  async findAll(): Promise<Image[]> {
+    return this.prisma.image.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} image`;
-  }
-
-  update(id: number, updateImageDto: UpdateImageDto) {
-    return `This action updates a #${id} image`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} image`;
+  async findOne(id: number): Promise<Image | null> {
+    return this.prisma.image.findUnique({ where: { id } });
   }
 }
